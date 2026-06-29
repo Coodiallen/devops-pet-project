@@ -1,9 +1,9 @@
 webapp:
   replicaCount: 2
   image:
-    repository: my-app
-    tag: local
-    pullPolicy: Never
+    repository: coodiallen/my-app 
+    tag: latest
+    pullPolicy: Always
 
 postgres:
   user: devops_user
