@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: my-app:local
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DATABASE_URL
+          value: "postgres://devops_user:SuperSecurePassword123@postgres:5432/pet_db?sslmode=disable"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: webapp

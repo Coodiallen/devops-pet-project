@@ -1,0 +1,14 @@
+webapp:
+  replicaCount: 2
+  image:
+    repository: my-app
+    tag: local
+    pullPolicy: Never
+
+postgres:
+  user: devops_user
+  password: SuperSecurePassword123
+  db: pet_db
+
+ingress:
+  host: localhost
